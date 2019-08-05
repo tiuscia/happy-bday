@@ -1,22 +1,23 @@
-import React from "react";
-import { string, func } from "prop-types";
-import "./Button.scss";
+import React from 'react';
+import { string } from 'prop-types';
+import { Link } from 'react-router-dom';
+import './Button.scss';
 
-const Button = ({ label, action }) => {
+const Button = ({ label, page }) => {
   return (
-    <button className="btn" type="button" onClick={action}>
-      {label}
-    </button>
+    <div className="btn">
+      <Link to={`/${page}`}>{label}</Link>
+    </div>
   );
 };
 
 Button.defaultProps = {
-  action: null
+  page: ''
 };
 
 Button.propTypes = {
   label: string.isRequired,
-  action: func
+  page: string
 };
 
 export default Button;

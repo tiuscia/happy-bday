@@ -1,14 +1,21 @@
-import React, { PureComponent } from "react";
-import Header from "../../component/Header/Header.jsx";
-import Footer from "../../component/Footer/Footer.jsx";
+import React, { PureComponent } from 'react';
+import Header from '../../component/Header/Header.jsx';
+import Button from '../../component/Button/Button.jsx';
+import { UserContext } from '../../context/UserContext.jsx';
 
 class ResultPage extends PureComponent {
   render() {
     return (
-      <React.Fragment>
-        <Header />
-        <Footer />
-      </React.Fragment>
+      <UserContext.Consumer>
+        {({ name, lastName }) => (
+          <div className="result">
+            <Header />
+            <Button label="back home" />
+            <span>{name}</span>
+            <span>{lastName}</span>
+          </div>
+        )}
+      </UserContext.Consumer>
     );
   }
 }

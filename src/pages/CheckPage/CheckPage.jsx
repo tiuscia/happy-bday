@@ -1,16 +1,17 @@
-import React, { PureComponent } from "react";
-import Header from "../../component/Header/Header.jsx";
-import Button from "../../component/Button/Button.jsx";
-import Footer from "../../component/Footer/Footer.jsx";
+import React, { PureComponent } from 'react';
+import Header from '../../component/Header/Header.jsx';
+import Button from '../../component/Button/Button.jsx';
+import Footer from '../../component/Footer/Footer.jsx';
+import './CheckPage.scss';
 
 class CheckPage extends PureComponent {
   render() {
     return (
-      <React.Fragment>
+      <div className="check">
         <Header />
-        <Button label="controlla" />
+        <Button label="check result" page="result" />
         <Footer />
-      </React.Fragment>
+      </div>
     );
   }
 }
