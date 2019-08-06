@@ -15,6 +15,10 @@ function App() {
           name="description"
           content="Celebrate your birthday with this contest"
         />
+        <link
+          href="https://fonts.googleapis.com/css?family=Red+Hat+Text:400,500,700&display=swap"
+          rel="stylesheet"
+        />
       </Helmet>
       <UserContextProvider>
         <Router>

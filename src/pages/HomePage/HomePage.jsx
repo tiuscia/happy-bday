@@ -42,48 +42,50 @@ class HomePage extends Component {
     return (
       <UserContext.Consumer>
         {({ setName, setLastName }) => (
-          <div className="home">
+          <div className="home page">
             <Header />
             <div className="home__content">
-              <div className="home__input-wrapper">
-                <span>Your name?</span>
-                <input
-                  className="home__input-name"
-                  type="text"
-                  placeholder=""
-                  name="name"
-                  autoComplete="on"
-                  onChange={this.handleNameChange}
-                  // onBlur
-                />
-                <div
-                  onClick={e => {
-                    setName(name);
-                  }}
-                  className="home_arrow"
-                >
-                  <ArrowRight />
+              <div className="home__form">
+                <div className="home__input-wrapper home__input-wrapper--current">
+                  <span>Your name?</span>
+                  <input
+                    className="home__input-name home__input-name--current"
+                    type="text"
+                    placeholder=""
+                    name="name"
+                    autoComplete="on"
+                    onChange={this.handleNameChange}
+                    // onBlur
+                  />
+                  <div
+                    onClick={e => {
+                      setName(name);
+                    }}
+                    className="home__arrow"
+                  >
+                    <ArrowRight />
+                  </div>
                 </div>
-              </div>
-              <div className="home__input-wrapper">
-                <span>Your lastname?</span>
-                <input
-                  className="home__input-lastname"
-                  type="text"
-                  placeholder=""
-                  name="lastname"
-                  autoComplete="on"
-                  onChange={this.handleLastNameChange}
-                  // onBlur
-                />
-                <div
-                  onClick={e => {
-                    setLastName(lastName);
-                    this.goToCheck();
-                  }}
-                  className="home_arrow"
-                >
-                  <ArrowRight />
+                <div className="home__input-wrapper">
+                  <span>Your lastname?</span>
+                  <input
+                    className="home__input-lastname home__input-lastname--current"
+                    type="text"
+                    placeholder=""
+                    name="lastname"
+                    autoComplete="on"
+                    onChange={this.handleLastNameChange}
+                    // onBlur
+                  />
+                  <div
+                    onClick={e => {
+                      setLastName(lastName);
+                      this.goToCheck();
+                    }}
+                    className="home__arrow"
+                  >
+                    <ArrowRight />
+                  </div>
                 </div>
               </div>
             </div>

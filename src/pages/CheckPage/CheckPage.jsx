@@ -7,7 +7,7 @@ import './CheckPage.scss';
 class CheckPage extends PureComponent {
   render() {
     return (
-      <div className="check">
+      <div className="check page">
         <Header />
         <Button label="check result" page="result" />
         <Footer />
