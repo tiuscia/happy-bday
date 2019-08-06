@@ -1,5 +1,5 @@
-import React from "react";
-import "./Footer.scss";
+import React from 'react';
+import './Footer.scss';
 
 const Footer = () => {
   return (
@@ -7,7 +7,7 @@ const Footer = () => {
       <div className="footer">
         <span>
           <span className="footer__apex">*</span>Concorso valido fino a
-          esaurimento budjet
+          esaurimento budget
         </span>
       </div>
     </React.Fragment>

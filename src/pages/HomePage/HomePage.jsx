@@ -13,29 +13,53 @@ class HomePage extends Component {
     this.state = {
       name: '',
       lastName: '',
-      redirect: false
+      redirect: false,
+      showNextInput: false,
+      showNextPage: false,
+      error: false
     };
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handleLastNameChange = this.handleLastNameChange.bind(this);
   }
 
   handleNameChange(e) {
-    this.setState({ name: e.target.value });
+    this.setState({ name: e.target.value, error: false });
   }
 
   handleLastNameChange(e) {
-    this.setState({ lastName: e.target.value });
+    this.setState({ lastName: e.target.value, error: false });
   }
 
   goToCheck() {
-    console.log('go to check... ...');
-    setTimeout(() => {
-      this.setState({ redirect: true });
-    }, 700);
+    const { lastName } = this.state;
+    if (lastName) {
+      this.setState({ showNextPage: true });
+      setTimeout(() => {
+        this.setState({ redirect: true });
+      }, 750);
+    } else {
+      this.setState({ error: true });
+    }
+  }
+
+  goNextInput() {
+    const { name } = this.state;
+    if (name) {
+      this.setState({ showNextInput: true });
+    } else {
+      this.setState({ error: true });
+    }
   }
 
   render() {
-    const { name, lastName, redirect } = this.state;
+    const {
+      name,
+      lastName,
+      redirect,
+      showNextInput,
+      showNextPage,
+      error
+    } = this.state;
     if (redirect) {
       return <Redirect push to="/check" />;
     }
@@ -46,8 +70,18 @@ class HomePage extends Component {
             <Header />
             <div className="home__content">
               <div className="home__form">
-                <div className="home__input-wrapper home__input-wrapper--current">
-                  <span>Your name?</span>
+                <div
+                  className={`home__input-wrapper ${
+                    !showNextInput ? 'home__input-wrapper--current' : ''
+                  }`}
+                >
+                  <span
+                    className={`home__label ${
+                      showNextInput ? 'home__label--hide' : ''
+                    }`}
+                  >
+                    Your name?
+                  </span>
                   <input
                     className="home__input-name home__input-name--current"
                     type="text"
@@ -55,18 +89,22 @@ class HomePage extends Component {
                     name="name"
                     autoComplete="on"
                     onChange={this.handleNameChange}
-                    // onBlur
                   />
                   <div
                     onClick={e => {
                       setName(name);
+                      this.goNextInput();
                     }}
                     className="home__arrow"
                   >
                     <ArrowRight />
                   </div>
                 </div>
-                <div className="home__input-wrapper">
+                <div
+                  className={`home__input-wrapper ${
+                    showNextInput ? 'home__input-wrapper--current' : ''
+                  }`}
+                >
                   <span>Your lastname?</span>
                   <input
                     className="home__input-lastname home__input-lastname--current"
@@ -75,7 +113,6 @@ class HomePage extends Component {
                     name="lastname"
                     autoComplete="on"
                     onChange={this.handleLastNameChange}
-                    // onBlur
                   />
                   <div
                     onClick={e => {
@@ -86,6 +123,22 @@ class HomePage extends Component {
                   >
                     <ArrowRight />
                   </div>
+                </div>
+                <div className="home__controls">
+                  <div
+                    className={`home__progress ${
+                      showNextInput ? 'home__progress--half' : ''
+                    } ${showNextPage ? 'home__progress--full' : ''}`}
+                  />
+                  {error && (
+                    <span className="home__error">
+                      Please fill the field before continuing
+                    </span>
+                  )}
+                  <span className="home__fraction">
+                    {showNextInput ? '2' : '1'}
+                    <span className="home__divide">&nbsp;&nbsp;/&nbsp;</span> 2
+                  </span>
                 </div>
               </div>
             </div>
