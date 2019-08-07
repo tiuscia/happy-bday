@@ -75,15 +75,18 @@ class HomePage extends Component {
                     !showNextInput ? 'home__input-wrapper--current' : ''
                   }`}
                 >
-                  <span
-                    className={`home__label ${
-                      showNextInput ? 'home__label--hide' : ''
-                    }`}
-                  >
-                    Your name?
-                  </span>
+                  <div className="home__label-wrapper">
+                    <span
+                      className={`home__label ${
+                        showNextInput ? 'home__label--move' : ''
+                      }`}
+                    >
+                      Your name?
+                    </span>
+                  </div>
+
                   <input
-                    className="home__input-name home__input-name--current"
+                    className="home__input home__input--current"
                     type="text"
                     placeholder=""
                     name="name"
@@ -105,9 +108,18 @@ class HomePage extends Component {
                     showNextInput ? 'home__input-wrapper--current' : ''
                   }`}
                 >
-                  <span>Your lastname?</span>
+                  <div className="home__label-wrapper">
+                    <span
+                      className={`home__label ${
+                        showNextInput ? 'home__label--move' : ''
+                      }`}
+                    >
+                      Your lastname?
+                    </span>
+                  </div>
+
                   <input
-                    className="home__input-lastname home__input-lastname--current"
+                    className="home__input home__input--current"
                     type="text"
                     placeholder=""
                     name="lastname"

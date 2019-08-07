@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import Header from '../../component/Header/Header.jsx';
 import Button from '../../component/Button/Button.jsx';
 import { UserContext } from '../../context/UserContext.jsx';
+import './ResulPage.scss';
 
 class ResultPage extends PureComponent {
   resultMsg = (name, lastName) => {
@@ -23,12 +24,16 @@ class ResultPage extends PureComponent {
         {({ name, lastName }) => (
           <div className="result page">
             <Header />
-            <Button label="back home" />
-            <div className="result__msg" />
-            <span>
-              Hi {name} {lastName}
-            </span>
-            {this.resultMsg(name, lastName)}
+            <div className="result__content">
+              <div className="result__msg">
+                <span>
+                  Hi {name} {lastName},
+                </span>
+                <br />
+                <span>{this.resultMsg(name, lastName)}</span>
+              </div>
+              <Button label="back home" />
+            </div>
           </div>
         )}
       </UserContext.Consumer>
