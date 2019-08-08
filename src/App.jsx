@@ -10,7 +10,7 @@ function App() {
   return (
     <React.Fragment>
       <Helmet>
-        <title>Happy bday</title>
+        <title>Happy bday to me</title>
         <meta
           name="description"
           content="Celebrate your birthday with this contest"

@@ -10,7 +10,7 @@ const Header = () => {
           <Cheers />
         </div>
         <span className="header__txt">
-          Someone's Bday - shottino o vino?
+          Someone's Bday - shot or wine?
           <span className="header__apex">*</span>
         </span>
       </div>

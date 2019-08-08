@@ -1,5 +1,108 @@
 .result {
 
+    &__big {
+        margin: 0 auto 50px auto;
+        text-transform: uppercase;
+        font-weight: 600;
+        font-size: 1.8em;
+        position: relative;
+        width: 500px;
+        max-width: 70vw;
+        padding: 0 20px;
+
+        &:before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            width: 0;
+            height: 0;
+            background: transparent;
+            border: 5px solid transparent;
+            animation: animate .5s linear forwards;
+        }
+
+        @keyframes animate {
+            0% {
+                width: 0;
+                height: 0;
+                border-top-color: rgba(0, 0, 0, 0.75);
+                border-bottom-color: transparent;
+                border-left-color: transparent;
+                border-right-color: transparent;
+            }
+
+            50% {
+                width: 100%;
+                height: 0;
+                border-top-color: rgba(0, 0, 0, 0.75);
+                border-bottom-color: transparent;
+                border-left-color: transparent;
+                border-right-color: rgba(0, 0, 0, 0.75);
+            }
+
+            100% {
+                width: 100%;
+                height: 100%;
+                border-top-color: rgba(0, 0, 0, 0.75);
+                border-bottom-color: transparent;
+                border-left-color: transparent;
+                border-right-color: rgba(0, 0, 0, 0.75);
+            }
+        }
+
+        &:after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            width: 0;
+            height: 0;
+            background: transparent;
+            border: 5px solid transparent;
+            animation: animate2 .5s linear forwards;
+            animation-delay: .5s;
+        }
+
+        @keyframes animate2 {
+            0% {
+                width: 0;
+                height: 0;
+                border-top-color: transparent;
+                border-bottom-color: transparent;
+                border-left-color: rgba(0, 0, 0, 0.75);
+                border-right-color: transparent;
+            }
+
+            50% {
+                width: 0;
+                height: 100%;
+                border-top-color: transparent;
+                border-bottom-color: rgba(0, 0, 0, 0.75);
+                border-left-color: rgba(0, 0, 0, 0.75);
+                border-right-color: transparent;
+            }
+
+            100% {
+                width: 100%;
+                height: 100%;
+                border-top-color: transparent;
+                border-bottom-color: rgba(0, 0, 0, 0.75);
+                border-left-color: rgba(0, 0, 0, 0.75);
+                border-right-color: transparent;
+            }
+        }
+
+
+        @media screen and (max-width:425px) {
+            font-size: 1.5em;
+        }
+    }
+
+    &__user-data {
+        text-transform: capitalize;
+    }
+
     &__content {
         flex: 1;
         overflow-y: auto;
@@ -7,7 +110,11 @@
     }
 
     &__msg {
-        font-size: 2.5em;
+        font-size: 2.2em;
         padding: 50px 20px;
+
+        @media screen and (max-width:425px) {
+            font-size: 2.0em;
+        }
     }
 }

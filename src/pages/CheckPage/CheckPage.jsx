@@ -9,7 +9,9 @@ class CheckPage extends PureComponent {
     return (
       <div className="check page">
         <Header />
-        <Button label="check result" page="result" />
+        <div className="check__content">
+          <Button label="check result" page="result" />
+        </div>
         <Footer />
       </div>
     );

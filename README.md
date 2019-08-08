@@ -27,3 +27,9 @@ The build is minified and the filenames include the hashes.<br>
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+## //TODO:
+
+- save data in cookie
+- add a limit of number for the wins
+- progressive web app

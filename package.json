@@ -2,7 +2,9 @@
   "name": "happy-bday",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://tiuscia.github.io/happy-bday",
   "dependencies": {
+    "gh-pages": "^2.1.1",
     "jshint": "^2.10.2",
     "lodash": "^4.17.15",
     "npm": "^6.10.2",

@@ -6,8 +6,8 @@ const Footer = () => {
     <React.Fragment>
       <div className="footer">
         <span>
-          <span className="footer__apex">*</span>Concorso valido fino a
-          esaurimento budget
+          <span className="footer__apex">*</span>Contest is valid while the
+          money lasts
         </span>
       </div>
     </React.Fragment>
