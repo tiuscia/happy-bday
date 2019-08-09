@@ -1,6 +1,6 @@
 import React from 'react';
 import Helmet from 'react-helmet';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { HashRouter, Route, Switch } from 'react-router-dom';
 import HomePage from './pages/HomePage/HomePage.jsx';
 import CheckPage from './pages/CheckPage/CheckPage.jsx';
 import ResultPage from './pages/ResultPage/ResultPage.jsx';
@@ -21,11 +21,13 @@ function App() {
         />
       </Helmet>
       <UserContextProvider>
-        <Router>
-          <Route exact path="/" component={HomePage} />
-          <Route path="/check" component={CheckPage} />
-          <Route path="/result" component={ResultPage} />
-        </Router>
+        <HashRouter>
+          <Switch>
+            <Route exact path="/" component={HomePage} />
+            <Route path="/check" component={CheckPage} />
+            <Route path="/result" component={ResultPage} />
+          </Switch>
+        </HashRouter>
       </UserContextProvider>
     </React.Fragment>
   );
