@@ -19,7 +19,7 @@
             height: 0;
             background: transparent;
             border: 5px solid transparent;
-            animation: animate .5s linear forwards;
+            animation: animate .3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
         }
 
         @keyframes animate {
@@ -60,8 +60,8 @@
             height: 0;
             background: transparent;
             border: 5px solid transparent;
-            animation: animate2 .5s linear forwards;
-            animation-delay: .5s;
+            animation: animate2 .3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            animation-delay: .3s;
         }
 
         @keyframes animate2 {
