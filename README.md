@@ -30,6 +30,7 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 ## //TODO:
 
-- save data in cookie
+- save data in cookie => in progress
 - add a limit of number for the wins
+- add a countdown when the user wins, max 5min to get the drink
 - progressive web app

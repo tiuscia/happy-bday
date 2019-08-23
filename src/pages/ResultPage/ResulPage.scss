@@ -9,6 +9,8 @@
         width: 500px;
         max-width: 70vw;
         padding: 0 20px;
+        display: flex;
+        flex-direction: column;
 
         &:before {
             content: '';
@@ -97,6 +99,12 @@
         @media screen and (max-width:425px) {
             font-size: 1.5em;
         }
+    }
+
+    &__date {
+        font-size: 0.3em;
+        display: inline-block;
+        margin-bottom: 5px;
     }
 
     &__user-data {

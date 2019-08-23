@@ -13,17 +13,18 @@ class ResultPage extends PureComponent {
 
     const { cookies } = props;
     this.state = {
-      wins: cookies.get('wins') || 0
+      winsCounter: cookies.get('winsCounter') || 0,
+      firstWinDate: cookies.get('firstWinDate') || '',
+      lastWinDate: cookies.get('lastWinDate') || ''
     };
   }
 
   resultMsg = (name, lastName) => {
-    const { wins } = this.state;
-    // read cookie
-    console.log('get cookie', wins);
+    const { winsCounter, firstWinDate, lastWinDate } = this.state;
+    let random = Math.round(Math.random());
 
-    const random = Math.round(Math.random());
     if (name.toLowerCase() === 'lauren' && lastName.toLowerCase() === 'lewis') {
+      // she can win how many times she wants
       return (
         <React.Fragment>
           <div className="result__big">you win</div>
@@ -34,15 +35,35 @@ class ResultPage extends PureComponent {
       );
     }
 
-    if (random) {
-      const { wins } = this.state;
-      const cookies = new Cookies();
-      console.log('before Wins', wins);
-      const newWins = parseInt(wins) + 1;
-      console.log('newWins', newWins);
+    // if last win is less then 15 min from now you lose
+    // check difference between first win and now is more then 3 hours you lose = LIMIT
+    if (firstWinDate) {
+      const diffFirstWin = moment().diff(firstWinDate, 'hours');
+      const diffLastWin = moment().diff(lastWinDate, 'minutes');
+      if (diffFirstWin >= 3 || diffLastWin < 10) {
+        random = 0;
+      }
+    }
 
-      // set coockie
-      cookies.set('wins', newWins.toString(), {
+    if (random) {
+      // set cookie
+      const cookies = new Cookies();
+      const newWinsCounter = parseInt(winsCounter) + 1;
+
+      // set the date/time of the fist win in the cookie
+      if (newWinsCounter === 1) {
+        cookies.set('firstWinDate', moment().format(), {
+          path: '/',
+          expires: new Date(
+            moment()
+              .add(1, 'days')
+              .format()
+          )
+        });
+      }
+
+      // add win in the cookie counter
+      cookies.set('winsCounter', newWinsCounter, {
         path: '/',
         expires: new Date(
           moment()
@@ -50,9 +71,25 @@ class ResultPage extends PureComponent {
             .format()
         )
       });
+
+      // ad date of the last win
+      cookies.set('lastWinDate', moment().format(), {
+        path: '/',
+        expires: new Date(
+          moment()
+            .add(1, 'days')
+            .format()
+        )
+      });
+
       return (
         <React.Fragment>
-          <div className="result__big">try again</div>
+          <div className="result__big">
+            you won{' '}
+            <span className="result__date">
+              {moment().format('MMMM Do YYYY, h:mm:ss a')}
+            </span>
+          </div>
           <span>
             Hi{' '}
             <span className="result__user-data">
@@ -60,14 +97,14 @@ class ResultPage extends PureComponent {
             </span>
           </span>
           <br />
-          <span>I'm sorry, you didn't win anything :/ </span>
+          <span>look for me and let me offer you a drink!</span>
         </React.Fragment>
       );
     }
 
     return (
       <React.Fragment>
-        <div className="result__big">you won</div>
+        <div className="result__big">try again</div>
         <span>
           Hi{' '}
           <span className="result__user-data">
@@ -75,7 +112,7 @@ class ResultPage extends PureComponent {
           </span>
         </span>
         <br />
-        <span>look for me and let me offer you a drink!</span>
+        <span>I'm sorry, you didn't win anything :/ </span>
       </React.Fragment>
     );
   };
@@ -84,7 +121,6 @@ class ResultPage extends PureComponent {
     return (
       <UserContext.Consumer>
         {({ name, lastName }) => {
-          console.log('from context', name, lastName);
           return name === undefined && lastName === undefined ? (
             // if there is no data, redirect to homepage
             <Redirect push to="/" />
