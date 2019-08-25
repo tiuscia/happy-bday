@@ -1,6 +1,8 @@
 # happy-bday
 
-yes, an app you can use for your bday.
+yes, an app you can use for your bday and not only.
+
+[DEMO](https://tiuscia.github.io/happy-bday/#/)
 
 Rules:
 
