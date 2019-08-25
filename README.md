@@ -2,7 +2,11 @@
 
 yes, an app you can use for your bday.
 
-...work in progress...
+Rules:
+
+- game last for 3 hours (user can play/win for 3 hours max)
+- user can win again after 10 min
+- user user can win 5 times max
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -28,9 +32,10 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-## //TODO:
+## // TODO:
 
-- save data in cookie => in progress
-- add a limit of number for the wins
-- add a countdown when the user wins, max 5min to get the drink
+- save data in cookie => done
+- add a limit of number for the wins => done
+- add a countdown when the user wins, max 5mins to get the drink
+- handle enter key on input (only for desktop)
 - progressive web app

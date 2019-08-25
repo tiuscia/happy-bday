@@ -40,7 +40,7 @@ class ResultPage extends PureComponent {
     if (firstWinDate) {
       const diffFirstWin = moment().diff(firstWinDate, 'hours');
       const diffLastWin = moment().diff(lastWinDate, 'minutes');
-      if (diffFirstWin >= 3 || diffLastWin < 10) {
+      if (diffFirstWin >= 3 || diffLastWin < 10 || winsCounter === '5') {
         random = 0;
       }
     }
