@@ -42,12 +42,24 @@ class HomePage extends Component {
     }
   }
 
+  goToCheckOnKey(e) {
+    if (e.key === 'Enter' || e.key === 'undefined') {
+      this.goToCheck();
+    }
+  }
+
   goNextInput() {
     const { name } = this.state;
     if (name) {
       this.setState({ showNextInput: true });
     } else {
       this.setState({ error: true });
+    }
+  }
+
+  goNextInputOnKey(e) {
+    if (e.key === 'Enter' || e.key === 'undefined') {
+      this.goNextInput();
     }
   }
 
@@ -92,10 +104,13 @@ class HomePage extends Component {
                     name="name"
                     autoComplete="on"
                     onChange={this.handleNameChange}
+                    onKeyPress={e => {
+                      this.goNextInputOnKey(e);
+                      setName(name);
+                    }}
                   />
                   <div
                     onClick={e => {
-                      setName(name);
                       this.goNextInput();
                     }}
                     className="home__arrow"
@@ -125,6 +140,10 @@ class HomePage extends Component {
                     name="lastname"
                     autoComplete="on"
                     onChange={this.handleLastNameChange}
+                    onKeyPress={e => {
+                      this.goToCheckOnKey(e);
+                      setLastName(lastName);
+                    }}
                   />
                   <div
                     onClick={e => {
